@@ -1,4 +1,4 @@
-package com.example.projeto_livraria_mobile.ui.theme
+package com.example.projeto_livraria_mobile.books.theme
 
 import android.app.Activity
 import android.os.Build

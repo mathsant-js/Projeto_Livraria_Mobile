@@ -1,4 +1,4 @@
-package com.example.projeto_livraria_mobile.ui.theme
+package com.example.projeto_livraria_mobile.books.theme
 
 import androidx.compose.ui.graphics.Color
 
