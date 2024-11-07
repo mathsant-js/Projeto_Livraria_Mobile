@@ -14,11 +14,11 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.inventory.InventoryTopAppBar
-import com.example.inventory.R
-import com.example.inventory.ui.AppViewModelProvider
-import com.example.inventory.ui.navigation.NavigationDestination
-import com.example.inventory.ui.theme.InventoryTheme
+import com.example.projeto_livraria_mobile.books.InventoryTopAppBar
+import com.example.projeto_livraria_mobile.books.R
+import com.example.projeto_livraria_mobile.books.ui.AppViewModelProvider
+import com.example.projeto_livraria_mobile.books.ui.navigation.NavigationDestination
+import com.example.projeto_livraria_mobile.books.theme.Projeto_Livraria_MobileTheme
 import kotlinx.coroutines.launch
 
 object BookEditDestination : NavigationDestination {
