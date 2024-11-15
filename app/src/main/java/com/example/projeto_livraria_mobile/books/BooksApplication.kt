@@ -1,8 +1,8 @@
 package com.example.projeto_livraria_mobile.books
 
 import android.app.Application
-import com.example.books.data.AppContainer
-import com.example.books.data.AppDataContainer
+import com.example.projeto_livraria_mobile.books.data.AppContainer
+import com.example.projeto_livraria_mobile.books.data.AppDataContainer
 
 class BooksApplication : Application() {
 

@@ -5,11 +5,11 @@ import kotlinx.coroutines.flow.Flow
 class OfflineBooksRepository(private val booksDAO: BooksDAO) : BooksRepository {
     override fun getAllBooksStream(): Flow<List<Books>> = booksDAO.getAllBooks()
 
-    override fun getItemStream(id: Int): Flow<Books?> = booksDao.getItem(id)
+    override fun getBookStream(id: Int): Flow<Books?> = booksDAO.getBook(id)
 
-    override suspend fun insertItem(item: Books) = booksDao.insert(item)
+    override suspend fun insertBook(book: Books) = booksDAO.insert(book)
 
-    override suspend fun deleteItem(item: Books) = booksDao.delete(item)
+    override suspend fun deleteBook(book: Books) = booksDAO.delete(book)
 
-    override suspend fun updateItem(item: Books) = booksDao.update(item)
+    override suspend fun updateBook(book: Books) = booksDAO.update(book)
 }

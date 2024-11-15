@@ -18,16 +18,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             Projeto_Livraria_MobileTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    App()
+                    BookApp()
                 }
             }
         }
     }
-}
-
-@Composable
-fun App() {
-
 }
 
 @Preview
@@ -35,7 +30,7 @@ fun App() {
 fun AppPreview() {
     Projeto_Livraria_MobileTheme {
         Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-            App()
+            BookApp()
         }
     }
 }

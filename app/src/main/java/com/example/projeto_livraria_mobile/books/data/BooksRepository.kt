@@ -6,22 +6,22 @@ interface BooksRepository {
 
     fun getAllBooksStream(): Flow<List<Books>>
     /**
-     * Retrieve an item from the given data source that matches with the [id].
+     * Retrieve a book from the given data source that matches with the [id].
      */
-    fun getItemStream(id: Int): Flow<Books?>
+    fun getBookStream(id: Int): Flow<Books?>
 
     /**
-     * Insert item in the data source
+     * Insert book in the data source
      */
-    suspend fun insertItem(item: Books)
+    suspend fun insertBook(book: Books)
 
     /**
-     * Delete item from the data source
+     * Delete book from the data source
      */
-    suspend fun deleteItem(item: Books)
+    suspend fun deleteBook(book: Books)
 
     /**
-     * Update item in the data source
+     * Update book in the data source
      */
-    suspend fun updateItem(item: Books)
+    suspend fun updateBook(book: Books)
 }

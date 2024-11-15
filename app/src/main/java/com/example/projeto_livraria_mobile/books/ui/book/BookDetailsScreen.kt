@@ -43,34 +43,41 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projeto_livraria_mobile.books.InventoryTopAppBar
-import com.example.projeto_livraria_mobile.books.R
-import com.example.projeto_livraria_mobile.books.data.Book
+import com.example.projeto_livraria_mobile.R
+import com.example.projeto_livraria_mobile.books.data.Books
 import com.example.projeto_livraria_mobile.books.ui.AppViewModelProvider
 import com.example.projeto_livraria_mobile.books.ui.navigation.NavigationDestination
 import com.example.projeto_livraria_mobile.books.theme.Projeto_Livraria_MobileTheme
 import kotlinx.coroutines.launch
 
+object BookDetailsDestination : NavigationDestination {
+    override val route = "book_details"
+    override val titleRes = R.string.book_detail_title
+    const val bookIdArg = "bookId"
+    val routeWithArgs = "$route/{$bookIdArg}"
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-class BookDetailsScreen (
+fun BookDetailsScreen(
     navigateToEditBook: (Int) -> Unit,
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: BookDetailsViewModel = viewModel(factory = AppViewModelProvider.Factory)
 ) {
-    val uistate = viewModel.uiState.collectAsState()
+    val uiState = viewModel.uiState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
             InventoryTopAppBar(
-                title = stringResource(ItemDetailsDestination.titleRes),
+                title = stringResource(BookDetailsDestination.titleRes),
                 canNavigateBack = true,
                 navigateUp = navigateBack
             )
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { navigateToEditItem(uiState.value.itemDetails.id) },
+                onClick = { navigateToEditBook(uiState.value.bookDetails.id) },
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier
                     .padding(
@@ -80,7 +87,7 @@ class BookDetailsScreen (
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = stringResource(R.string.edit_item_title),
+                    contentDescription = stringResource(R.string.edit_book_title),
                 )
             }
         },
@@ -91,7 +98,7 @@ class BookDetailsScreen (
             onSellBook = { viewModel.reduceQuantityByOne() },
             onDelete = {
                 coroutineScope.launch {
-                    viewModel.deleteItem()
+                    viewModel.deleteBook()
                     navigateBack()
                 }
             },
@@ -118,11 +125,11 @@ private fun BookDetailsBody(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
-        ItemDetails(
+        BookDetails(
             book = bookDetailsUiState.bookDetails.toBook(), modifier = Modifier.fillMaxWidth()
         )
         Button(
-            onClick = onSellItem,
+            onClick = onSellBook,
             modifier = Modifier.fillMaxWidth(),
             shape = MaterialTheme.shapes.small,
             enabled = !bookDetailsUiState.outOfStock
@@ -152,7 +159,7 @@ private fun BookDetailsBody(
 
 @Composable
 fun BookDetails(
-    book: Book, modifier: Modifier = Modifier
+    book: Books, modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier, colors = CardDefaults.cardColors(

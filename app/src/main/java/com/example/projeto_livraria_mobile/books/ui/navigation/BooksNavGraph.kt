@@ -7,20 +7,20 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.books.ui.home.HomeDestination
-import com.example.books.ui.home.HomeScreen
-import com.example.books.ui.item.ItemDetailsDestination
-import com.example.books.ui.item.ItemDetailsScreen
-import com.example.books.ui.item.ItemEditDestination
-import com.example.books.ui.item.ItemEditScreen
-import com.example.books.ui.item.ItemEntryDestination
-import com.example.books.ui.item.ItemEntryScreen
+import com.example.projeto_livraria_mobile.books.ui.home.HomeDestination
+import com.example.projeto_livraria_mobile.books.ui.home.HomeScreen
+import com.example.projeto_livraria_mobile.books.ui.book.BookDetailsDestination
+import com.example.projeto_livraria_mobile.books.ui.book.BookDetailsScreen
+import com.example.projeto_livraria_mobile.books.ui.book.BookEditDestination
+import com.example.projeto_livraria_mobile.books.ui.book.BookEditScreen
+import com.example.projeto_livraria_mobile.books.ui.book.BookEntryDestination
+import com.example.projeto_livraria_mobile.books.ui.book.BookEntryScreen
 
 /**
  * Provides Navigation graph for the application.
  */
 @Composable
-fun InventoryNavHost(
+fun BooksNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
 ) {
@@ -31,36 +31,36 @@ fun InventoryNavHost(
     ) {
         composable(route = HomeDestination.route) {
             HomeScreen(
-                navigateToItemEntry = { navController.navigate(ItemEntryDestination.route) },
-                navigateToItemUpdate = {
-                    navController.navigate("${ItemDetailsDestination.route}/${it}")
+                navigateToBookEntry = { navController.navigate(BookEntryDestination.route) },
+                navigateToBookUpdate = {
+                    navController.navigate("${BookDetailsDestination.route}/${it}")
                 }
             )
         }
-        composable(route = ItemEntryDestination.route) {
-            ItemEntryScreen(
+        composable(route = BookEntryDestination.route) {
+            BookEntryScreen(
                 navigateBack = { navController.popBackStack() },
                 onNavigateUp = { navController.navigateUp() }
             )
         }
         composable(
-            route = ItemDetailsDestination.routeWithArgs,
-            arguments = listOf(navArgument(ItemDetailsDestination.itemIdArg) {
+            route = BookDetailsDestination.routeWithArgs,
+            arguments = listOf(navArgument(BookDetailsDestination.bookIdArg) {
                 type = NavType.IntType
             })
         ) {
-            ItemDetailsScreen(
-                navigateToEditItem = { navController.navigate("${ItemEditDestination.route}/$it") },
+            BookDetailsScreen(
+                navigateToEditBook = { navController.navigate("${BookEditDestination.route}/$it") },
                 navigateBack = { navController.navigateUp() }
             )
         }
         composable(
-            route = ItemEditDestination.routeWithArgs,
-            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+            route = BookEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(BookEditDestination.bookIdArg) {
                 type = NavType.IntType
             })
         ) {
-            ItemEditScreen(
+            BookEditScreen(
                 navigateBack = { navController.popBackStack() },
                 onNavigateUp = { navController.navigateUp() }
             )

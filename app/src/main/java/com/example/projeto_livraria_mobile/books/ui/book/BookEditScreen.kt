@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.projeto_livraria_mobile.books.InventoryTopAppBar
-import com.example.projeto_livraria_mobile.books.R
+import com.example.projeto_livraria_mobile.R
 import com.example.projeto_livraria_mobile.books.ui.AppViewModelProvider
 import com.example.projeto_livraria_mobile.books.ui.navigation.NavigationDestination
 import com.example.projeto_livraria_mobile.books.theme.Projeto_Livraria_MobileTheme
@@ -30,7 +30,7 @@ object BookEditDestination : NavigationDestination {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-class BookEditScreen(
+fun BookEditScreen(
     navigateBack: () -> Unit,
     onNavigateUp: () -> Unit,
     modifier: Modifier = Modifier,

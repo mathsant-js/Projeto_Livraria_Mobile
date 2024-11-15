@@ -13,15 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.inventory.R.string
-import com.example.inventory.ui.navigation.InventoryNavHost
+import com.example.projeto_livraria_mobile.R.string
+import com.example.projeto_livraria_mobile.books.ui.navigation.BooksNavHost
 
 /**
  * Top level composable that represents screens for the application.
  */
 @Composable
 fun BookApp(navController: NavHostController = rememberNavController()) {
-    BookNavHost(navController = navController)
+    BooksNavHost(navController = navController)
 }
 
 /**
