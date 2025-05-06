@@ -7,7 +7,7 @@ import com.example.appdatabase.roomDB.Book
 import kotlinx.coroutines.launch
 
 class BookViewModel(private val repository: Repository) : ViewModel() {
-    fun getBook() = repository.getAllBook().asLiveData(viewModelScope.coroutineContext)
+    fun getAllBooks() = repository.getAllBook().asLiveData(viewModelScope.coroutineContext)
 
     fun upsertBook(book: Book) {
         viewModelScope.launch {
@@ -15,11 +15,13 @@ class BookViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun updateBook(nome: String, autor: String, preco: String, id: String) {
+    fun updateBook(nome: String, autor: String, editora: String, ano: String, preco: String, id: String) {
         viewModelScope.launch {
             val book = Book(
                 nome,
                 autor,
+                editora,
+                ano,
                 preco,
                 id.toInt()
             )
@@ -28,11 +30,13 @@ class BookViewModel(private val repository: Repository) : ViewModel() {
         }
     }
 
-    fun deleteBook(nome: String, autor: String, preco: String, id: String) {
+    fun deleteBook(nome: String, autor: String, editora: String, ano: String, preco: String, id: String) {
         viewModelScope.launch {
             val book = Book(
                 nome,
                 autor,
+                editora,
+                ano,
                 preco,
                 id.toInt()
             )

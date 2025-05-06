@@ -15,8 +15,10 @@ class Repository(private val db: BookDataBase) {
     fun updateBookQuery(book: Book, id: Int) {
         val nome = book.nome
         val autor = book.autor
+        val editora = book.editora
+        val ano = book.ano
         val preco = book.preco
-        db.bookDao().updateBookQuery(nome, autor, preco, id)
+        db.bookDao().updateBookQuery(nome, autor, editora, ano, preco, id)
     }
 
     fun deleteBookQuery(id: Int) {
